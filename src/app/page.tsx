@@ -1,33 +1,18 @@
-type Color = "red" | "blue" | "green" | "yellow" | "black" | "white" | "gray";
-
 type ButtonProps = {
-  text: string;
-  subtitle?: string;
-  color?: Color;
-  backgruondColor?: Color ;
-  sizes: 30 | 40 | 50
+  padding: ["top", "right", "bottom", "left"]
 };
 
-
-// 1RA FORMA DE ESCRIBIR FUNCIONES PASANDO PROPS USANDO TIPOS DE DATOS CON TYPE 
-
-function Button(props: ButtonProps) {
-  const {text, subtitle, color} = props;
-
-  return (<button type="button">{text}</button>
+function Button({}: ButtonProps) {
+  return (<button type="button" >test</button>
   )
 }
 
-const page = () => {
+function Page() {
   return (
     <div>
-      <Button text="hello word" 
-      backgruondColor="blue"
-      color="red"
-      / >
-
+      <Button padding={["top", "right", "bottom", "left"]}/ >    
     </div>
   )
 }
 
-export default page
+export default Page
