@@ -3,12 +3,10 @@
 import { JSX, ReactNode } from "react";
 
   type ButtonProps = {
-    children: JSX.Element | JSX.Element[] | string | React.ReactNode;
+    children:  ReactNode;
   };
 
-  // ReactNode especifica casi cualquier tipo de dato ya sea un JSX o un numero string, etc
-  // 
-
+ 
   function Button({children}: ButtonProps) {
     return (
     <button>{children}</button>
