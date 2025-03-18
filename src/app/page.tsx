@@ -1,26 +1,28 @@
-"use client"
+  "use client"
 
-type ButtonProps = {
-  onClick:  ( ) => void;
-};
+  type ButtonProps = {
+    onClick:  (text: string) => void;
+  };
 
-function Button({onClick}: ButtonProps) {
-  return (
-  <button onClick={onClick }>
-    test
-  </button>
-  )
-}
+  function Button({onClick}: ButtonProps) {
+    return (
+    <button onClick={() => {return (
+      onClick("hello word")
+    )}}>
+      test
+    </button>
+    )
+  }
 
-function Page() {
-  return (
-    <div>
-      <Button 
-      onClick={() => {
-        alert("Works!!")
-      }} / >    
-    </div>
-  )
-}
+  function Page() {
+    return (
+      <div>
+        <Button 
+        onClick={() => {
+          alert("Works!!")
+        }} / >    
+      </div>
+    )
+  }
 
 export default Page
