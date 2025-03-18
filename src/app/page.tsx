@@ -1,26 +1,28 @@
   "use client"
 
+import { JSX, ReactNode } from "react";
+
   type ButtonProps = {
-    onClick:  (text: string) => void;
+    children: JSX.Element | JSX.Element[] | string | React.ReactNode;
   };
 
-  function Button({onClick}: ButtonProps) {
+  // ReactNode especifica casi cualquier tipo de dato ya sea un JSX o un numero string, etc
+  // 
+
+  function Button({children}: ButtonProps) {
     return (
-    <button onClick={() => {return (
-      onClick("hello word")
-    )}}>
-      test
-    </button>
+    <button>{children}</button>
     )
   }
 
   function Page() {
     return (
       <div>
-        <Button 
-        onClick={() => {
-          alert("Works!!")
-        }} / >    
+        <Button>
+          <div>div 1</div>
+          <div>div 2</div>
+          <div>div 3</div>
+        </Button>
       </div>
     )
   }
