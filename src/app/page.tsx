@@ -1,12 +1,10 @@
 type ButtonProps = {
-  style: React.CSSProperties;
+  userAges: Record<"Pepito"|"Juanito"|"Fulanito", number>
 };
 
-function Button({style}: ButtonProps) {
+function Button({}: ButtonProps) {
   return (
-  <button 
-    style={style}
-  >
+  <button>
     test
   </button>
   )
@@ -15,13 +13,14 @@ function Button({style}: ButtonProps) {
 function Page() {
   return (
     <div>
-      <Button style={{
-        backgroundColor: "gold",
-        color: "black",
-        fontSize: "30px",
-        padding: "100px"
-      }}
-      
+      <Button  
+        userAges={
+          {
+            Pepito: 10,
+            Juanito: 30,
+            Fulanito: 45
+          }
+        }
       / >    
     </div>
   )
