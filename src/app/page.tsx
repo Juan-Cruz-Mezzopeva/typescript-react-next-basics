@@ -1,16 +1,28 @@
 type ButtonProps = {
-  padding: ["top", "right", "bottom", "left"]
+  style: React.CSSProperties;
 };
 
-function Button({}: ButtonProps) {
-  return (<button type="button" >test</button>
+function Button({style}: ButtonProps) {
+  return (
+  <button 
+    style={style}
+  >
+    test
+  </button>
   )
 }
 
 function Page() {
   return (
     <div>
-      <Button padding={["top", "right", "bottom", "left"]}/ >    
+      <Button style={{
+        backgroundColor: "gold",
+        color: "black",
+        fontSize: "30px",
+        padding: "100px"
+      }}
+      
+      / >    
     </div>
   )
 }
