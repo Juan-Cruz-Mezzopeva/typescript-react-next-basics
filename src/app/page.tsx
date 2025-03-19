@@ -1,72 +1,34 @@
   "use client"
 
+import { ComponentPropsWithoutRef } from "react";
 
-  // type ButtonProps = {
-  //   title?: string
-  // };
 
+  type ButtonProps = ComponentPropsWithoutRef<"button"> ;
+
+  //con ComponenProps (que puede ser simple con o sin ref) podemos pasar 
+  // todos los props que vienen a partir de etiquetas sin la necesidad de escribirlas todas, por ejemplo ese onClick
+  // tener en cuenta que hay que escribir de que etiqueta quiero los atributos como props
   
-  const botonX: ButtonProps = {
-    color: { color: "blue"},
-    title: "",
-    count: 0,  
-  }
-
-  type Animal = {
-    nombre: string;
-  };
-  
-  // Esto daría error:
-  // type Animal = {
-  //   edad: number;
-  // };
- 
- 
-  type ResultadoOperacion = number | "error";
-
-  function dividir(a: number, b: number): ResultadoOperacion {
-    if (b === 0) {
-      return "error";
-    }
-    return a / b;
-  }
-
-  type Coordenadas = [number, number];
-
-  const ubicacion: Coordenadas = [10, 20];
-
-
-  console.log(botonX)
-  console.log(dividir(12,0))
-  console.log(ubicacion)
-  
-
-  interface Color {
-    color: "red" | "blue" | "green";
-  }
- interface ButtonProps {
-  count?: number
- }
-
-  interface ButtonProps {
-    title?: string
-    color: Color
-  }
-
-  function Button({title, color}: ButtonProps) {
+  function Button(props: ButtonProps) {
     return (
-    <button style={{backgroundColor: color.color}}> {title }</button>
-    )
+      <button {...props}>
+        {props.children || "Haz clic aquí"}
+      </button>
+    );
   }
-
+  
   function Page() {
-
-
+    const handleClick = () => {
+      alert("¡Botón clickeado!");
+    };
+  
     return (
       <div>
-        <Button title="i'm Here" color={{color: "green"}}/>
+        <Button onClick={handleClick} disabled={false}>
+          Mi Botón
+        </Button>
       </div>
-    )
+    );
   }
-
-export default Page
+  
+  export default Page;
