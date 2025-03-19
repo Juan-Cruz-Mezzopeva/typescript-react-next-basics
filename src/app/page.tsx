@@ -5,19 +5,10 @@ import { ComponentPropsWithoutRef } from "react";
 
   type ButtonProps = ComponentPropsWithoutRef<"button"> ;
 
-  function Button({onClick, ...rest}: ButtonProps) {
-    
-    const handleClick = () => {
-      if(onClick) {
-        alert('Cliked')
-      }
-    }
-
+  function Button(rest: ButtonProps) {
     return (
       <button 
-      onClick={handleClick} {...rest}>
-        Button        
-      </button>
+       {...rest}>Button</button>
     );
   }
   
@@ -27,13 +18,12 @@ import { ComponentPropsWithoutRef } from "react";
       <div>
         <Button 
         style={{
-          color: "transparent"
+          background: "black"
         }}
         onClick={() => {
-          alert("hello world!!")
+          alert('hello world!!')
         }}
-        disabled={true}>
-          Mi Botón
+        disabled={false}>
         </Button>
       </div>
     );
