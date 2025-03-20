@@ -1,32 +1,45 @@
-  "use client"
+"use client";
 
-import { ComponentPropsWithoutRef } from "react";
+import { useState } from "react";
 
+interface ButtonProps {
+  texto: string;
+  color: "red" | "blue" | "green";
+  deshabilitado?: boolean;
+}
 
-  type ButtonProps = ComponentPropsWithoutRef<"button"> ;
+type BotonPersonalizadoProps = Partial<Omit<ButtonProps, "color">> & {
+  color?: string;
+};
 
-  function Button(rest: ButtonProps) {
-    return (
-      <button 
-       {...rest}>Button</button>
-    );
-  }
-  
-  function Page() {
+function BotonPersonalizado({ texto, color = "gray", deshabilitado = false }: BotonPersonalizadoProps) {
+  const [clics, setClics] = useState(0);
 
-    return (
-      <div>
-        <Button 
-        style={{
-          background: "black"
-        }}
-        onClick={() => {
-          alert('hello world!!')
-        }}
-        disabled={false}>
-        </Button>
-      </div>
-    );
-  }
-  // 
-  export default Page;
+  const handleClick = () => {
+    if (!deshabilitado) {
+      setClics(clics + 1);
+    }
+  };
+
+  return (
+    <button
+      style={{ backgroundColor: color, padding: "10px", color: "white", border: "none" }}
+      onClick={handleClick}
+      disabled={deshabilitado}
+    >
+      {texto} (Clics: {clics})
+    </button>
+  );
+}
+
+function Page() {
+  return (
+    <div>
+      <BotonPersonalizado texto="Clic aquí" color="blue" />
+      <BotonPersonalizado texto="Deshabilitado" deshabilitado={true} />
+      <BotonPersonalizado texto="Personalizado" color="purple" />
+    </div>
+  );
+}
+
+export default Page;
